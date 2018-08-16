@@ -4,9 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfMvvmBindingDemo"
+        xmlns:j="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="TextMobile" Grid.Row="0" Grid.Column="0" Text="Mobile"></TextBlock>
+        <TextBox Name="TBMobile" Grid.Row="0" Grid.Column="1"></TextBox>
+        <Button Name="BGetVerifyCode" Grid.Row="0" Grid.Column="2" Content="Get Verify Code" ></Button>
+
+        <TextBlock Name="TextVerifyCode" Grid.Row="1" Grid.Column="0" Text="Mobile">
+            <j:Interaction.Triggers>
+                <j:EventTrigger EventName="MouseDown">
+                    <j:InvokeCommandAction Command="{Binding CommandGetVerifyCode}"></j:InvokeCommandAction>
+                </j:EventTrigger>
+            </j:Interaction.Triggers>
+        </TextBlock>
+        <TextBox Name="TBVerifyCode" Grid.Row="1" Grid.Column="1"></TextBox>
+        <Button Name="BRegister" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="Register"></Button>
+
+        <TextBlock Name="TextMessage" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Register Result"></TextBlock>
+
     </Grid>
 </Window>
